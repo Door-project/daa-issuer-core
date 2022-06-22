@@ -5,6 +5,8 @@
 #target_sources(daabridgecpp PRIVATE native-lib.cpp)
 
 
+message(STATUS "project source dir: ${PROJECT_SOURCE_DIR}")
+
 
 
 project("daabridgecpp")
@@ -23,7 +25,6 @@ include_directories(/home/menelaos/libs/cJSON)
 link_directories(/home/menelaos/libs/incubator-milagro-crypto-c/lib)
 include_directories(/home/menelaos/libs/incubator-milagro-crypto-c/include)
 
-
 add_library( # Sets the name of the library.
         daabridgecpp
 
@@ -41,3 +42,9 @@ target_sources(
 )
 
 target_link_libraries(daabridgecpp m crypto cjson ibmtss amcl_bls_FP256BN amcl_mpin_FP256BN amcl_curve_FP256BN amcl_pairing_FP256BN amcl_wcc_FP256BN)
+
+
+set(RESOURCES_PATH "${PROJECT_SOURCE_DIR}/../../../src/main/resources")
+file(COPY "/home/menelaos/libs/cJSON/build/" DESTINATION "${RESOURCES_PATH}")
+file(COPY "/home/menelaos/libs/ibmtss/utils/" DESTINATION "${RESOURCES_PATH}")
+file(COPY "/home/menelaos/libs/incubator-milagro-crypto-c/lib/" DESTINATION "${RESOURCES_PATH}")
